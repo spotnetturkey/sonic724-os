@@ -1,6 +1,10 @@
 <?php
 require ("sessionstart.php");
-
+if ($_SESSION[_SESSIONPERMPREFIX.'auth'] != "yes")
+{
+header("Location:"._PERMERRORURL);
+die();
+}
 require ("config.php");
 $file=$_GET[file];
 $stat=$_GET[stat];
