@@ -18,13 +18,13 @@ mkdir /var/www/html/triggers/time/3
 mkdir /var/www/html/triggers/time/4 
 mkdir /var/www/html/triggers/time/5 
 mkdir /var/www/html/triggers/time/6 
-cd /var/www/html 
-chown www-data:www-data * -R
 mkdir /var/config/
 echo "21232f297a57a5a743894a0e4a801fc3" >/var/config/users
 chown www-data:www-data /var/config -R
 echo >/var/www/html/triggers/nowplayingv
 echo >/var/www/html/triggers/nowlock
+cd /var/www/html 
+chown www-data:www-data * -R
 rm /var/www/html/index.html
 sudo chmod +x /etc/rc.localmy
 systemctl enable rc-localmy
