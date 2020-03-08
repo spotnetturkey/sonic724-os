@@ -12,5 +12,6 @@
 # By default this script does nothing.
 echo >/var/www/html/triggers/nowplayingv
 echo >/var/www/html/triggers/nowlock
+chown www-data:www-data /var/www/html/triggers/*
 exit 0
 
