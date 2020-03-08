@@ -1,0 +1,6 @@
+rm "./../images/images_day_advA/$1"
+rm "./../images/images_day_advA/thumbs_1/$1"
+rm "./../images/images_day_advA/slideshow_1/$1"
+rm "./../images/images_day_advA/videos/$1"
+rm "./../images/images_day_advA/videos/$2"
+rm "./../images/images_day_advA/videos/$2.info"

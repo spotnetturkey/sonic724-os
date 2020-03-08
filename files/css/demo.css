@@ -1,0 +1,77 @@
+html,
+body
+{
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+
+	
+	font-family: Georgia;
+	font-size: 12px;
+	color: #ffffff;
+}
+
+p
+{
+	padding: 0px 0px 0px 0px;	
+}
+
+
+p.header
+{
+	font-weight: bold;	
+	clear: both;
+	font-size: 20px;
+
+}
+
+p.title
+{
+	font-weight: bold;	
+	clear: both;
+	font-size: 20px;
+}
+
+p.ajax-loader
+{
+	text-align: center;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}
+
+
+/* jContent demos */
+#demo1.jc-horizontal a.prev,
+#demo1.jc-horizontal a.next,
+#demo7.jc-horizontal a.prev,
+#demo7.jc-horizontal a.next
+{
+	margin-top: 0px;
+}
+
+.jContent div.slides
+{
+	height: 150px;
+	border: 0px solid #cccccc;
+}
+
+.jContent p.title
+{
+	padding: 0px 0px 0px 0px;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.jContent p.txt
+{
+	padding: 0px 0px 0px 0px;
+	font-size: 14px;
+}
+
+.jContent p.txt img
+{
+	float: left;
+	display: block;
+	border: 0px solid #ffffff;
+	margin: 0px 0px 0px 0px;
+}
+

@@ -1,0 +1,14 @@
+[Unit]
+Description=/etc/rc.localmy
+ConditionPathExists=/etc/rc.localmy
+
+[Service]
+Type=forking
+ExecStart=/etc/rc.localmy start
+TimeoutSec=0
+StandardOutput=tty
+RemainAfterExit=yes
+SysVStartPriority=99
+
+[Install]
+WantedBy=multi-user.target

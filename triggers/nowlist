@@ -1,0 +1,8 @@
+#Starting File 14:45:24
+sudo sh /rd-data/play_start
+pkill showt; showt & 
+echo 'istiklal marsi_meb-sozlu.mp3' >./../triggers/nowplayingv 
+myplayersN.bin  -novideo -af volume=0.1:0 './../sounds/istiklal marsi_meb-sozlu.mp3' 
+echo >./../triggers/nowplayingv
+echo >./../triggers/nowlock 
+sudo sh /rd-data/play_stop
