@@ -1,6 +1,10 @@
 <?php
 require ("sessionstart.php");
-
+if ($_SESSION[_SESSIONPERMPREFIX.'auth'] != "yes")
+{
+header("Location:"._PERMERRORURL);
+die();
+}
 require ("config.php");
 $file=$_GET[file];
 $stat=$_GET[stat];
@@ -13,14 +17,9 @@ if ($stat=="play")
 {
 $runsh=true;
 
-system("sudo pkill -f belllist > /dev/null 2>&1 &");
-system("sudo pkill -f nowlist > /dev/null 2>&1 &");
-system("sudo pkill -f myplayerN-start > /dev/null 2>&1 &");
-system("sudo pkill -f myplayersN.bin > /dev/null 2>&1 & ");
-system("sudo echo >./../triggers/nowplayingv;");
+send_sock("stop");
 file_put_contents("./../triggers/nowlist","#Starting File ".date("H:i:s")."\n");
 file_put_contents("./../triggers/nowlock","kill");
-	
 $path_info = pathinfo($file);
 $ext=$path_info['extension'];	
 $fname=$path_info['filename'];
@@ -45,19 +44,24 @@ file_put_contents("./../triggers/nowlist","echo >./../triggers/nowlock \n",FILE_
 
 if ($runsh)
 {
-system("sudo pkill -f nowlist;sudo pkill -f myplayerN-start; sudo pkill -f myplayersN.bin;sudo echo >./../triggers/nowplayingv");
-shell_exec("cd ./../triggers/;sudo chmod +x nowlist; sudo sh nowlist >/dev/null 2>/dev/null &");		
+send_sock("stop");
+send_sock("play nowlist");
 }
 } else {
-system("sudo pkill -f nowlist > /dev/null 2>&1 &");
-system("sudo pkill -f belllist > /dev/null 2>&1 &");
-system("sudo pkill -f myplayerN-start > /dev/null 2>&1 &");
-system("sudo pkill -f myplayersN.bin > /dev/null 2>&1 & ");
-system("sudo echo >./../triggers/nowplayingv;");
-system("sudo echo >./../triggers/nowlock;");
-
+send_sock("stop");
 }
 }
 
+function send_sock($command)
+{
+$socket = socket_create(AF_UNIX, SOCK_DGRAM, 0);
+if (!$socket)
+        die('Unable to create AF_UNIX socket');
+
+$server_side_sock = "/var/config/server1.sock";
+$msg = "$command";
+$len = strlen($msg);
+$bytes_sent = socket_sendto($socket, $msg, $len, 0, $server_side_sock);
+}
 
 ?>

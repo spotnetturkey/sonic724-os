@@ -1,7 +1,0 @@
-www-data ALL = (root) NOPASSWD: /usr/bin/myplayersN.bin
-www-data ALL = (root) NOPASSWD: /usr/bin/pkill
-www-data ALL = (root) NOPASSWD: /usr/bin/sh
-www-data ALL = (root) NOPASSWD: /var/www/html/triggers/time/./deletekey.sh
-www-data ALL = (root) NOPASSWD: /var/www/html/triggers/time/./deletefiles.sh
-www-data ALL = (root) NOPASSWD: /usr/sbin/ifconfig
-
