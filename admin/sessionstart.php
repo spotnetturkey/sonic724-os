@@ -1,13 +1,13 @@
 <?php
 require("globaldefine.php");
 session_start();
-if (($_GET[lang]=="english") || ($_GET[lang]=="turkish"))
+$langget= isset($_GET['lang']) ? $_GET['lang'] : '';
+if (($langget=="english") || ($langget=="turkish"))
 {
-$_SESSION[_SESSIONPREFIX.'language']=$_GET[lang];
+$_SESSION[_SESSIONPREFIX.'language']=$langget;
 }
 $userlang=(isset($_SESSION[_SESSIONPREFIX.'language'])) ? $_SESSION[_SESSIONPREFIX.'language']: 'english';
 require ("lang_".$userlang.".php");
-define('_PANELVERSION','0.1a');
 $filedir= dirname(__FILE__);
 require "$filedir/themes/config_theme.php";
 ?>

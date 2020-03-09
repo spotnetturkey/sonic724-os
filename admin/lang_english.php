@@ -3,7 +3,7 @@ define('_ENGLISH', 'English');
 define('_TURKISH', 'Türkçe');
 define('_RUSSIAN', 'Русский');
 
-define (_APPLY_CHANGES,"Apply Changes");
+define ('_APPLY_CHANGES',"Apply Changes");
 
 
 define("_DAILY_COPY","Select Day");
@@ -22,9 +22,7 @@ define('_CLOSEDTIME','Closed Days');
 define('_DATETIME_ERROR','Date Error');
 define('_NO_SOUND','No Sound');
 
-define('_ON','On');
 define('_OFF','Off');
-define('_WAIT','Wait');
 
 define('_SOUND_STAT','Volume Control');
 define('_DEFAULT_SOUND',"Default Volume Control");
@@ -32,7 +30,6 @@ define('_ADD_1','Add ');
 define('_OFF_NOW','Off Now');
 define('_ON_NOW','On Now');
 define('_ON','On');
-define('_OFF','Off');
 define('_WAIT','Wait');
 
 
@@ -65,10 +62,10 @@ define("_SELECT","Select...");
 
 
 
-define (_DISK_STATUS,"Disk Status");
-define(_FILE_NAME,"File Name");
-define(_FILE_SIZE,"Size");
-define(_DATE,"Date");
+define ('_DISK_STATUS',"Disk Status");
+define('_FILE_NAME',"File Name");
+define('_FILE_SIZE',"Size");
+define('_DATE',"Date");
 define('_CONTROLPANEL','Sonic724 Control Panel');
 define('_ADBOX_VERSION','Sonic724 Administration Interface - Version 1.0');
 define('_LOGINTITLE','Sonic724 Control Panel');
@@ -89,6 +86,10 @@ define ('_UPLOAD_SUCCESS','Upload Files Success');
 define ('_UPLOAD_FAILED','Upload Files Failed');
 
 
+define('_CONFIRMDELETE',"Confirm - Delete Record");
+define('_CONFIRM_DELETE',"Confirm - Delete Record");
+
+define('_CANCEL',"İptal");
 
 
 define ('_IP_ADRESS',"Ip Address" );
@@ -104,40 +105,40 @@ define('_SECURITYCODE','Security Code');
 
 
 
-define (_DAY0,"Sunday");
-define (_DAY1,"Monday");
-define (_DAY2,"Tuesday");
-define (_DAY3,"Wednesday");
-define (_DAY4,"Thursday");
-define (_DAY5,"Friday");
-define (_DAY6,"Saturday");
-define (_DAY_ALL," - ");
+define ('_DAY0',"Sunday");
+define ('_DAY1',"Monday");
+define ('_DAY2',"Tuesday");
+define ('_DAY3',"Wednesday");
+define ('_DAY4',"Thursday");
+define ('_DAY5',"Friday");
+define ('_DAY6',"Saturday");
+define ('_DAY_ALL'," - ");
 
-define (_SCREENSHOT,"Screenshot");
-define (_SORT,"Sort");
-define (_SUBTITLE,"Sub Title");
-define (_LOGO,"Logo");
+define ('_SCREENSHOT',"Screenshot");
+define ('_SORT',"Sort");
+define ('_SUBTITLE',"Sub Title");
+define ('_LOGO',"Logo");
 
-define (_TEXT1,"Açıklama");
-define (_TEXT2,"Açıklama 2");
-define (_ADRES,"Adres");
-define (_WEBSITE,"Web Sitesi");
-define (_EMAIL,"Email");
-define (_IMAGE,"Image");
-
-
-define (_REFRESH_SCREEN,"Refresh Screen");
-define (_REFRESH_COMMAND_SENT,"Screen Refresh Command Sent");
+define ('_TEXT1',"Comment");
+define ('_TEXT2',"Comment 2");
+define ('_ADRES',"Adres");
+define ('_WEBSITE',"Web Site");
+define ('_EMAIL',"Email");
+define ('_IMAGE',"Image");
 
 
-define (_SERVICES_MODE,"System Services");
-define (_COMMAND_SENT,"Command Sent");
-define (_FULLSCREEN_REFRESH,"Refresh Fullscreen");
-define (_RESTART_TV,"Refresh TV Window");
-define (_SOFTWARE_RESTART_TV,"Refresh TV Services");
-define (_RESTART_SYSTEM,"Restart System");
+define ('_REFRESH_SCREEN',"Refresh Screen");
+define ('_REFRESH_COMMAND_SENT',"Screen Refresh Command Sent");
 
-define (_STREAM_URL,"Stream Url");
+
+define ('_SERVICES_MODE',"System Services");
+define ('_COMMAND_SENT',"Command Sent");
+define ('_FULLSCREEN_REFRESH',"Refresh Fullscreen");
+define ('_RESTART_TV',"Refresh TV Window");
+define ('_SOFTWARE_RESTART_TV',"Refresh TV Services");
+define ('_RESTART_SYSTEM',"Restart System");
+
+define ('_STREAM_URL',"Stream Url");
 
 
 
@@ -219,15 +220,13 @@ define('_YESSHUTDOWN','YES/ Shutdown');
 define('_NOBACK','NO / <<Back'); 
 
 
-//PACKAGEREPORT
-//MENU TITLE
-define(_MENU_PACKAGES,'Packages');
-define(_MENU_CONNECTIONS,'Connections');
-define(_MENU_TEMPLATES,'Templates');
-define(_MENU_ADVERTISEMENT,'Advertisement');
-define(_MENU_CONFIG,'Config');
-define(_MENU_LOGOUT,'Logout');
-define(_MENU_LOGS,'Logs');
+define('_MENU_PACKAGES','Packages');
+define('_MENU_CONNECTIONS','Connections');
+define('_MENU_TEMPLATES','Templates');
+define('_MENU_ADVERTISEMENT','Advertisement');
+define('_MENU_CONFIG','Config');
+define('_MENU_LOGOUT','Logout');
+define('_MENU_LOGS','Logs');
 
 define("_PAGES","Pages");
 define("_LINES","Lines");
@@ -240,35 +239,34 @@ define ("_SECOND","Second");
 define ("_SECONDS","Seconds");
 
 
-define (_DATE,"Date");
-define (_TIME,"Time");
-define (_ACTION,"Action");
+define ('_TIME',"Time");
+define ('_ACTION',"Action");
 
-define (_SESSIONTIME,"Session Time");
-define (_UPLOAD,"Upload");
-define (_DOWNLOAD,"Download");
-define (_OLDPASSWORD,"Old Password");
-define (_NEWPASSWORD,"New Password");	
-define (_CHANGEPASSADMIN,"Change Login Password");
-define (_PASSLENGHTERR,"Password Lenght >=6");
-define (_NEWPASSNOTMATCH,"New Password Not Match");
-define (_OLDPASSNOTMATCH,"Old Password Not Match");
+define ('_SESSIONTIME',"Session Time");
+define ('_UPLOAD',"Upload");
+define ('_DOWNLOAD',"Download");
+define ('_OLDPASSWORD',"Old Password");
+define ('_NEWPASSWORD',"New Password");	
+define ('_CHANGEPASSADMIN',"Change Login Password");
+define ('_PASSLENGHTERR',"Password Lenght >=6");
+define ('_NEWPASSNOTMATCH',"New Password Not Match");
+define ('_OLDPASSNOTMATCH',"Old Password Not Match");
 
-define (_SYSTEM_REBOOT,"Reboot");
-
+define ('_SYSTEM_REBOOT',"Reboot");
 
 
-define (_WEEK,"Week");
-define (_YEAR,"Year");
-define (_YEARS,"Years");
 
-define (_IPSTART,"Start");
-define (_IPSTOP,"Stop");
-define (_IPIP,"IP");
-define (_IPMAC,"Mac");
-define (_IPSTATUS,"Status");
+define ('_WEEK',"Week");
+define ('_YEAR',"Year");
+define ('_YEARS',"Years");
 
-define (_IPUP,"Up");
-define (_IPDOWN,"Down");
+define ('_IPSTART',"Start");
+define ('_IPSTOP',"Stop");
+define ('_IPIP',"IP");
+define ('_IPMAC',"Mac");
+define ('_IPSTATUS',"Status");
+
+define ('_IPUP',"Up");
+define ('_IPDOWN',"Down");
 
 ?>

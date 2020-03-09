@@ -70,9 +70,9 @@ define("_SELECT","Seçiniz...");
 
 
 
-define(_FILE_NAME,"Dosya Adı");
-define(_FILE_SIZE,"Boyut");
-define(_DATE,"Tarih");
+define('_FILE_NAME',"Dosya Adı");
+define('_FILE_SIZE',"Boyut");
+define('_DATE',"Tarih");
 
 define('_CONTROLPANEL','Sonic724 Kontrol Panel');
 define('_ADBOX_VERSION','Sonic724 Yönetim Arayüzü - Version 1.0');
@@ -80,7 +80,7 @@ define('_LOGINTITLE','Sonic724 Kontrol Panel');
 
 
 
-define (_TIME_SEC,"Süre(sn)");
+define ('_TIME_SEC',"Süre(sn)");
 
 define ('_DISABLE','Pasif Yap');
 
@@ -102,34 +102,34 @@ define('_YES', 'Evet');
 define('_NO', 'Hayır');
 
 
-define (_DAY0,"Pazar");
-define (_DAY1,"Pazartesi");
-define (_DAY2,"Salı");
-define (_DAY3,"Çarşamba");
-define (_DAY4,"Perşembe");
-define (_DAY5,"Cuma");
-define (_DAY6,"Cumartesi");
-define (_DAY_ALL,"-");
+define ('_DAY0',"Pazar");
+define ('_DAY1',"Pazartesi");
+define ('_DAY2',"Salı");
+define ('_DAY3',"Çarşamba");
+define ('_DAY4',"Perşembe");
+define ('_DAY5',"Cuma");
+define ('_DAY6',"Cumartesi");
+define ('_DAY_ALL',"-");
 
 
-define (_SORT,"Sıralama");
-define (_LOGO,"Logo");
+define ('_SORT',"Sıralama");
+define ('_LOGO',"Logo");
 
-define (_TEXT1,"Açıklama");
-define (_TEXT2,"Açıklama 2");
-define (_ADRES,"Adres");
-define (_WEBSITE,"Web Sitesi");
-define (_EMAIL,"Email");
+define ('_TEXT1',"Açıklama");
+define ('_TEXT2',"Açıklama 2");
+define ('_ADRES',"Adres");
+define ('_WEBSITE',"Web Sitesi");
+define ('_EMAIL',"Email");
 
-define (_MENU_EDIT,"Düzenlemeler");
-define (_SAVE,"Kaydet");
-define (_PAGE_SAVED,"Sayfa Kaydedildi");
+define ('_MENU_EDIT',"Düzenlemeler");
+define ('_SAVE',"Kaydet");
+define ('_PAGE_SAVED',"Sayfa Kaydedildi");
 
-define (_APPLY_CHANGES,"Değişiklikleri Uygula");
-define (_IMAGE,"Resim");
+define ('_APPLY_CHANGES',"Değişiklikleri Uygula");
+define ('_IMAGE',"Resim");
 
-define (_REFRESH_SCREEN,"Ekranı Yenile");
-define (_REFRESH_COMMAND_SENT,"Ekran Yenileme Komutu Gönderildi");
+define ('_REFRESH_SCREEN',"Ekranı Yenile");
+define ('_REFRESH_COMMAND_SENT',"Ekran Yenileme Komutu Gönderildi");
 
 define('_LANGUAGES', 'Diller');
 define('_USERNAME', 'Kullanıcı Adı');
@@ -189,12 +189,12 @@ define('_SAT','Cts');
 // MENU
 define('_CHANGEPASSWORD','Şifre Değiştir');
 define('_PASSWORDCHANGED','Şifre Değiştirildi');
-define (_OLDPASSWORD,"Eski Şifre");
-define (_NEWPASSWORD,"Yeni Şifre");	
-define (_CHANGEPASSADMIN,"Giriş Şifresi Değiştir");
-define (_PASSLENGHTERR,"Şifre Genişliği >=6");
-define (_NEWPASSNOTMATCH,"Yeni Şifre Uyumsuz");
-define (_OLDPASSNOTMATCH,"Eski Şifre Uyumsuz");
+define ('_OLDPASSWORD',"Eski Şifre");
+define ('_NEWPASSWORD',"Yeni Şifre");	
+define ('_CHANGEPASSADMIN',"Giriş Şifresi Değiştir");
+define ('_PASSLENGHTERR',"Şifre Genişliği >=6");
+define ('_NEWPASSNOTMATCH',"Yeni Şifre Uyumsuz");
+define ('_OLDPASSNOTMATCH',"Eski Şifre Uyumsuz");
 define('_LOGOUT','Çıkış');
 
 
@@ -218,13 +218,13 @@ define('_SYSTEMSHUTTINGDOWN','System Kapat');
 
 
 //MENU TITLE
-define(_MENU_PACKAGES,'Paketler');
-define(_MENU_CONNECTIONS,'Bağlantılar');
-define(_MENU_TEMPLATES,'Şablonlar');
-define(_MENU_ADVERTISEMENT,'Reklamlar');
-define(_MENU_CONFIG,'Ayarlar');
-define(_MENU_LOGOUT,'Çıkış');
-define(_MENU_LOGS,'Log Kayıtları');
+define('_MENU_PACKAGES','Paketler');
+define('_MENU_CONNECTIONS','Bağlantılar');
+define('_MENU_TEMPLATES','Şablonlar');
+define('_MENU_ADVERTISEMENT','Reklamlar');
+define('_MENU_CONFIG','Ayarlar');
+define('_MENU_LOGOUT','Çıkış');
+define('_MENU_LOGS','Log Kayıtları');
 
 define("_PAGES","Sayfalar");
 define("_LINES","Satırlar");
@@ -239,33 +239,31 @@ define ("_MACID","Mac Id");
 define ("_SECOND","Saniye");
 define ("_SECONDS","Saniye");
 
+define ('_FILENAME',"Dosya Adı");
+define ('_TIME',"Zaman");
+define ('_ACTION',"İşlem");
+define ('_USER',"Kullanıcı");
+define('_CONFIRMDELETE',"Onay - Paket Silme");
+define('_CONFIRM_DELETE',"Onay - Paket Silme");
 
-define (_FILENAME,"Dosya Adı");
-define (_DATE,"Tarih");
-define (_TIME,"Zaman");
-define (_ACTION,"İşlem");
-define (_USER,"Kullanıcı");
-define(_CONFIRMDELETE,"Onay - Paket Silme");
-define(_CONFIRM_DELETE,"Onay - Paket Silme");
-
-define(_CANCEL,"İptal");
-define (_DELETEREPORTS,"Rapor Silme");
+define('_CANCEL',"İptal");
+define ('_DELETEREPORTS',"Rapor Silme");
 
 
 
-define (_ONLINE,"Online ");
-define (_OFFLINE,"Offline");
+define ('_ONLINE',"Online ");
+define ('_OFFLINE',"Offline");
 
-define (_SENDSMS,"Sms Gönder");
-define (_PHONE_FORMAT,"Tel. No (5xxxx,05xxxx,905xxxx...)");
-define (_CELLPHONENUMBER,"Mobil Tel.No");
-define (_ENABLE,"Enable");
+define ('_SENDSMS',"Sms Gönder");
+define ('_PHONE_FORMAT',"Tel. No (5xxxx,05xxxx,905xxxx...)");
+define ('_CELLPHONENUMBER',"Mobil Tel.No");
+define ('_ENABLE',"Enable");
 
 
 
-define (_SYSTEM_DISKUSAGE,"Disk Kullanımı");
-define (_WEEK,"Hafta");
-define (_YEAR,"Yıl");
-define (_YEARS,"Yıl");
+define ('_SYSTEM_DISKUSAGE',"Disk Kullanımı");
+define ('_WEEK',"Hafta");
+define ('_YEAR',"Yıl");
+define ('_YEARS',"Yıl");
 
 ?>
