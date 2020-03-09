@@ -12,7 +12,7 @@
 # By default this script does nothing.
 echo >/var/www/html/triggers/nowplayingv
 echo >/var/www/html/triggers/nowlock
-cd /var/www/html/admin/startscript/ ; php -q /var/www/html/admin/startscript/listensocket.php &
+cd /var/www/html/admin/startscript/ ; php -q /var/www/html/admin/startscript/listensocket.php > /dev/null 2>&1 &
 chown www-data:www-data /var/www/html/triggers/* 
 exit 0
 
