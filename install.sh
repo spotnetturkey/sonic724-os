@@ -31,6 +31,6 @@ systemctl enable rc-localmy
 systemctl restart apache2
 grep -qxF '*/1     * * * * www-data  cd /var/www/html/admin/startscript; php -q ./soundplay.php' /etc/crontab || echo '*/1     * * * * www-data  cd /var/www/html/admin/startscript; php -q ./soundplay.php' >>/etc/crontab
 cd /usr/bin; ln -s mplayer myplayersN.bin
-echo "Tarih Zaman Ayarlanıyor"
+echo "Adjusting Date Time"
 ntpdate  tr.pool.ntp.org
-echo "Kurulum Tamamlandı - Sistemi Yeniden Başlatmayı Unutmayın"
+echo "Installation completed. Please reboot system."
