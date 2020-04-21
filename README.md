@@ -9,4 +9,6 @@ cd sonic724-os
 
 sudo sh install.sh
 
+Default Username / Password : admin/admin
+
 
