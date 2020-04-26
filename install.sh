@@ -4,7 +4,6 @@ a2enmod ssl
 apt-get install mplayer -y
 apt-get install ntpdate alsa-utils alsa-tools -y
 cp admin /var/www/html/. -r 
-cp scrmy /var/www/html/. -r
 cp img-panel /var/www/html/. -r 
 cp files /var/www/html/. -r
 cp sounds /var/www/html/. -r
