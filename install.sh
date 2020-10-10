@@ -24,7 +24,6 @@ echo "21232f297a57a5a743894a0e4a801fc3" >/var/config/users
 chown www-data:www-data /var/config -R
 echo >/var/www/html/triggers/nowplayingv
 echo >/var/www/html/triggers/nowlock
-rm /var/www/html/index.html
 sudo chmod +x /etc/rc.localmy
 systemctl enable rc-localmy
 systemctl restart apache2
