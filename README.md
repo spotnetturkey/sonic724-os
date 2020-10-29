@@ -9,6 +9,8 @@ cd sonic724-os
 
 sudo sh install.sh
 
+Reboot system and open url : http://systemip/admin
+
 # Default Username / Password : admin/admin
 
 
