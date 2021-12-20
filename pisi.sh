@@ -1,5 +1,5 @@
 sudo pisi ur
-sudo pisi it -c curl net-tools apache2 php php-intl php-curl -y 
+sudo pisi it -c curl net-tools apache php php-intl php-curl -y 
 a2enmod ssl 
 sudo pisi it -c mplayer -y
 sudo pisi it -c ntpdate alsa-utils alsa-tools -y
