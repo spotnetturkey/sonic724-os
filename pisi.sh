@@ -1,8 +1,8 @@
 sudo pisi ur
-sudo pisi it -c curl net-tools apache php php-intl php-curl -y 
+sudo pisi it curl net-tools apache php php-intl php-curl -y 
 a2enmod ssl 
-sudo pisi it -c mplayer -y
-sudo pisi it -c ntpdate alsa-utils alsa-tools -y
+sudo pisi it  mplayer -y
+sudo pisi it  ntpdate alsa-utils alsa-tools -y
 cp admin /var/www/html/. -r 
 cp img-panel /var/www/html/. -r 
 cp files /var/www/html/. -r
