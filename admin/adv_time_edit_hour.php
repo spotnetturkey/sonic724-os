@@ -73,7 +73,7 @@ if ($_POST["submit"] == _APPLY_CHANGES) {
     array_multisort($sortnew, SORT_ASC, SORT_NUMERIC, $lnt);
     
 
-
+$flista=array();
     foreach ($pf as $k => $f) {
         $flista[] = $sr[$k].'#'.$f.'#'.$snd[$k].'#'.$lnt[$k]."\n";
     }

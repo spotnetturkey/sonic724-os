@@ -11,3 +11,4 @@ $userlang = (isset($_SESSION[_SESSIONPREFIX.'language'])) ? $_SESSION[_SESSIONPR
 require 'lang_'.$userlang.'.php';
 $filedir = dirname(__FILE__);
 require "$filedir/themes/config_theme.php";
+date_default_timezone_set('Asia/Istanbul');

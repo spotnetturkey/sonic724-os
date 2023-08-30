@@ -127,7 +127,7 @@ echo "
 
 
 if ($_GET['op'] == 'select') {
-    file_put_contents('./../triggers/selecthour', $_GET['day'].','.$_GET[h]);
+    file_put_contents('./../triggers/selecthour', $_GET['day'].','.$_GET['h']);
 }
 
 if ($_GET['op'] == 'dselect') {
@@ -153,7 +153,7 @@ if ($_GET['op'] == 'paste') {
     if ($sh[1]) {
         $srcd = './../triggers/time/'.$sh[0].'/'.$sh[1];
         // echo $srcd;
-        $cpd = './../triggers/time/'.$_GET['day'].'/'.$_GET[h].'_files';
+        $cpd = './../triggers/time/'.$_GET['day'].'/'.$_GET['h'].'_files';
         // echo "cp ".$srcd."_".$tsc."_files $cpd";
         system('cp '.$srcd.'_files '.$cpd);
     }
@@ -165,7 +165,7 @@ if ($_GET['op'] == 'delete') {
     if ($sh[1]) {
         $srcd = './../triggers/time/'.$sh[0].'/'.$sh[1];
         // echo $srcd;
-        $cpd = 'rm ./../triggers/time/'.$_GET[day].'/'.$_GET[h].'_files';
+        $cpd = 'rm ./../triggers/time/'.$_GET["day"].'/'.$_GET["h"].'_files';
         // echo "cp ".$srcd."_".$tsc."_files $cpd";
         system("$cpd");
     }
