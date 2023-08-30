@@ -1,5 +1,5 @@
 <?php
-require ("sessionstart.php");
+require 'sessionstart.php';
 ?>
 <html><head>
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
@@ -24,7 +24,7 @@ color: #000000;
 <br>
 <br>
 <center>
-<div class="ab"><?php echo _DONTHAVEPERMISSION;?></div>
+<div class="ab"><?php echo _DONTHAVEPERMISSION; ?></div>
 <br>
 <FORM><INPUT type=button value="<<Back " class="btn" onClick="history.back();">
 <INPUT type=button value="Login Screen>>" class="btn" onClick="location.href='index.php'">

@@ -1,18 +1,27 @@
 <?php
-require ("sessionstart.php");
-//print_r($_SESSION);
-if ($_SESSION[_SESSIONPERMPREFIX.'auth'] != "yes")
-{
-header("Location:"._PERMERRORURL);
-die();	
-}	
-require ("config.php");
 
-$DAYS=array(_DAY0,_DAY1,_DAY2,_DAY3,_DAY4,_DAY5,_DAY6);
+require 'sessionstart.php';
+// print_r($_SESSION);
+if ($_SESSION[_SESSIONPERMPREFIX.'auth'] != 'yes') {
+    header('Location:'._PERMERRORURL);
+    die();
+}
 
-$DAY=$_GET[day];
+require 'config.php';
 
-$HEADINJECTION='
+$DAYS = [
+    _DAY0,
+    _DAY1,
+    _DAY2,
+    _DAY3,
+    _DAY4,
+    _DAY5,
+    _DAY6,
+];
+
+$DAY = $_GET['day'];
+
+$HEADINJECTION = '
 <link href="uploadfile.css" rel="stylesheet">
 <script src="./../files/js/jquery.min.js"></script>
 <script src="jquery.uploadfile.min_'.$userlang.'.js"></script>
@@ -109,200 +118,170 @@ $(\'#btn_green\').html(\''._START_NOW.'\');
 
 
 
-$PAGETITLE=_PLAYLIST_EDIT."-".$DAYS[$DAY];
-include ("tpl_controlpanel.php");
+$PAGETITLE = _PLAYLIST_EDIT.'-'.$DAYS[$DAY];
+require 'tpl_controlpanel.php';
 
 echo "
 <div class='ba'>
-"._PLAYLIST_EDIT."-".$DAYS[$DAY]."</div><br>";
+"._PLAYLIST_EDIT.'-'.$DAYS[$DAY].'</div><br>';
 
 
-if($_GET['op']=='select')
-{
-file_put_contents("./../triggers/selecthour",$_GET['day'].",".$_GET[h]);
+if ($_GET['op'] == 'select') {
+    file_put_contents('./../triggers/selecthour', $_GET['day'].','.$_GET[h]);
 }
 
-if($_GET['op']=='dselect')
-{
-file_put_contents("./../triggers/selectday",$_GET['day']);
+if ($_GET['op'] == 'dselect') {
+    file_put_contents('./../triggers/selectday', $_GET['day']);
 }
 
-if($_GET['op']=='dpaste')
-{
-$sh=strval(trim(file_get_contents("./../triggers/selectday")));
-//echo strval($sh);
-if (strval($sh)!="")
-{
-$srcd="./../triggers/time/".$sh."/*";
-$cpd="./../triggers/time/".$_GET[day]."/.";
-system("rm $cpd/* -r");	
-$cmd1="cp $srcd $cpd -R";
-system($cmd1);	
-
-}
+if ($_GET['op'] == 'dpaste') {
+    $sh = strval(trim(file_get_contents('./../triggers/selectday')));
+    // echo strval($sh);
+    if (strval($sh) != '') {
+        $srcd = './../triggers/time/'.$sh.'/*';
+        $cpd  = './../triggers/time/'.$_GET['day'].'/.';
+        system("rm $cpd/* -r");
+        $cmd1 = "cp $srcd $cpd -R";
+        system($cmd1);
+    }
 }
 
 
-if($_GET['op']=='paste')
-{
-$sh=explode(",",file_get_contents("./../triggers/selecthour"));
-//print_r($sh);
-if ($sh[1])
-{
-$srcd="./../triggers/time/".$sh[0]."/".$sh[1];
-//echo $srcd;
-$cpd="./../triggers/time/".$_GET[day]."/".$_GET[h]."_files";
-//echo "cp ".$srcd."_".$tsc."_files $cpd";
-system("cp ".$srcd."_files ".$cpd);	
-}
+if ($_GET['op'] == 'paste') {
+    $sh = explode(',', file_get_contents('./../triggers/selecthour'));
+    // print_r($sh);
+    if ($sh[1]) {
+        $srcd = './../triggers/time/'.$sh[0].'/'.$sh[1];
+        // echo $srcd;
+        $cpd = './../triggers/time/'.$_GET['day'].'/'.$_GET[h].'_files';
+        // echo "cp ".$srcd."_".$tsc."_files $cpd";
+        system('cp '.$srcd.'_files '.$cpd);
+    }
 }
 
-if($_GET['op']=='delete')
-{
-$sh=explode(",",file_get_contents("./../triggers/selecthour"));
-//print_r($sh);
-if ($sh[1])
-{
-$srcd="./../triggers/time/".$sh[0]."/".$sh[1];
-//echo $srcd;
-$cpd="rm ./../triggers/time/".$_GET[day]."/".$_GET[h]."_files";
-//echo "cp ".$srcd."_".$tsc."_files $cpd";
-system("$cpd");	
-}
-
+if ($_GET['op'] == 'delete') {
+    $sh = explode(',', file_get_contents('./../triggers/selecthour'));
+    // print_r($sh);
+    if ($sh[1]) {
+        $srcd = './../triggers/time/'.$sh[0].'/'.$sh[1];
+        // echo $srcd;
+        $cpd = 'rm ./../triggers/time/'.$_GET[day].'/'.$_GET[h].'_files';
+        // echo "cp ".$srcd."_".$tsc."_files $cpd";
+        system("$cpd");
+    }
 }
 
 
 
 
-if ($_POST[submit_apply]==_APPLY_CHANGES)
-{
-$sortnew=$_POST[sort];
-$videotimenew=$_POST[videotime];
-$aktifpasifnew=$_POST[aktifpasif];
-$timenew=$_POST[time];
+if ($_POST['submit_apply'] == _APPLY_CHANGES) {
+    $sortnew       = $_POST['sort'];
+    $videotimenew  = $_POST['videotime'];
+    $aktifpasifnew = $_POST['aktifpasif'];
+    $timenew       = $_POST['time'];
 
-$resimdizin="./../sounds/";
+    $resimdizin = './../sounds/';
 
-if (is_array($_POST[delete])) foreach ($_POST[delete] as $key=>$del)
-{
-unlink ("$resimdizin/$key");
-unlink ("$resimdizin/$key.png");
-unlink ("$resimdizin/$key.jpg");
-unlink ("$resimdizin/$key.info");
+    if (is_array($_POST['delete'])) {
+        foreach ($_POST['delete'] as $key => $del) {
+            unlink("$resimdizin/$key");
+            unlink("$resimdizin/$key.png");
+            unlink("$resimdizin/$key.jpg");
+            unlink("$resimdizin/$key.info");
 
-unset($timenew[$key]);
-unset($sortnew[$key]);
-unset($videotimenew[$key]);
-}
+            unset($timenew["$key"]);
+            unset($sortnew["$key"]);
+            unset($videotimenew["$key"]);
+        }
+    }
 
-$newarray[0]=$sortnew;
-$newarray[1]=$videotimenew;
-$newarray[2]=$aktifpasifnew;
+    $newarray[0] = $sortnew;
+    $newarray[1] = $videotimenew;
+    $newarray[2] = $aktifpasifnew;
 
 
 
-$data_file=base64_encode(serialize($newarray));
-file_put_contents("./../triggers/dailyvideo/ADV/sortvideo_".$DAY,$data_file);
+    $data_file = base64_encode(serialize($newarray));
+    file_put_contents('./../triggers/dailyvideo/ADV/sortvideo_'.$DAY, $data_file);
 
-$data_file=base64_encode(serialize($timenew));
-file_put_contents("./../triggers/dailyvideo/ADV/time_".$DAY,$data_file);
+    $data_file = base64_encode(serialize($timenew));
+    file_put_contents('./../triggers/dailyvideo/ADV/time_'.$DAY, $data_file);
 
-$sortimage=$sortnew;
-$videotime=$videotimenew;
-$aktifpasif=$aktifpasifnew;
-$time=$timenew;
-}
+    $sortimage  = $sortnew;
+    $videotime  = $videotimenew;
+    $aktifpasif = $aktifpasifnew;
+    $time       = $timenew;
+}//end if
 
 
 
 echo filelistresim($DAY);
-include("tpl_controlpanel_footer.php");
+require 'tpl_controlpanel_footer.php';
 
 
 function filelistresim($day)
 {
-global $sortimage,$videotime,$aktifpasif,$timelist,$time,$DAYS;
+    global $sortimage,$videotime,$aktifpasif,$timelist,$time,$DAYS;
 
+    $playfile = trim(file_get_contents('./../triggers/nowplayingv'));
+    $playlock = trim(file_get_contents('./../triggers/nowlock'));
 
-$playfile=trim(file_get_contents("./../triggers/nowplayingv"));
-$playlock=trim(file_get_contents("./../triggers/nowlock"));
+    $resimdizin  = './../sounds/';
+    $dosyalistem = filelistdizin1("$resimdizin");
 
+    if (is_array($dosyalistem)) {
+        $collator = new Collator('tr_TR');
+        $collator->asort($dosyalistem, Collator::SORT_STRING);
+    }
 
-$resimdizin="./../sounds/";
-$dosyalistem=filelistdizin1("$resimdizin");
+    // asort($dosyalistem);
+    $dlist = "<select id='dlist' name='dlist' style='font-size:20px;width:450px;margin:3px'>";
+    foreach ($dosyalistem as $k => $d) {
+        $d = str_replace('.png', '', $d);
+        if ($d == $playfile) {
+            $dlist .= "<option value=\"$d\" selected>$d</option>";
+        } else {
+            $dlist .= "<option value=\"$d\">$d</option>";
+        }
+    }
 
-if (is_array($dosyalistem))
-{
+    $dlist .= '
+</select>';
 
-$collator = new Collator('tr_TR');
-$collator->asort($dosyalistem,Collator::SORT_STRING);
-}
-//asort($dosyalistem);
-$dlist="<select id='dlist' name='dlist' style='font-size:20px;width:450px;margin:3px'>";
-foreach ($dosyalistem as $k=>$d)
-{
-$d=str_replace(".png","",$d);
-if ($d==$playfile)
-{
-$dlist.="<option value=\"$d\" selected>$d</option>";
-} else {
-$dlist.="<option value=\"$d\">$d</option>";
-}
-}
-$dlist.="
-</select>";
-
-if (($playlock=='kill') AND ($playfile))
-{
-$dlist=optionlist("sound","default").optionlenght("lenght","default")."<br><a id=\"btn_green\" style='margin:3px;padding:3px;'>"._PLAY_NOW."&nbsp;</a>
+    if (($playlock == 'kill') and ($playfile)) {
+        $dlist = optionlist('sound', 'default').optionlenght('lenght', 'default')."<br><a id=\"btn_green\" style='margin:3px;padding:3px;'>"._PLAY_NOW.'&nbsp;</a>
 <script>
-var pliststatus=\"stop\";
+var pliststatus="stop";
 button1();
-</script>".$dlist."
-<br>";
-
-
-} else {
-
-
-$dlist="
-".optionlist("sound","default").optionlenght("lenght","default")."<br>"."<a id=\"btn_green\" style='margin-top:7px;padding:3px;'>"._PLAY_NOW."&nbsp;</a>
+</script>'.$dlist.'
+<br>';
+    } else {
+        $dlist = '
+'.optionlist('sound', 'default').optionlenght('lenght', 'default').'<br>'."<a id=\"btn_green\" style='margin-top:7px;padding:3px;'>"._PLAY_NOW.'&nbsp;</a>
 <script>
-var pliststatus=\"stop\";
+var pliststatus="stop";
 button1();
 </script>
-".$dlist."<br> ";
+'.$dlist.'<br> ';
+    }
 
-}
+    $statusres = trim(file_get_contents('./../triggers/playliststatus'));
 
-
-
-
-$statusres=trim(file_get_contents("./../triggers/playliststatus"));
-
-
-
-
-if ($statusres=='refresh')
-{$list.='<p>'.$dlist.'</p>
+    if ($statusres == 'refresh') {
+        $list .= '<p>'.$dlist.'</p>
 <p>
 <input type="checkbox" name="dailyres" id="dailyres" value="enabled" checked>
 <span id=m1><font style="font-size:16px;color:green;font-weight:bold">'._PLAYLIST_STATUS_ENABLED.'</font></span> </p>
 ';
-} else {
-$list.='
+    } else {
+        $list .= '
 <p>'.$dlist.'</p>
 <p>
 <input type="checkbox" name="dailyres" id="dailyres" value="disabled">
 <span id=m1><font style="font-size:16px;color:red;font-weight:bold">'._PLAYLIST_STATUS_DISABLED.'</font></span> </p>';
-}
+    }
 
-
-
-
-
-$list.="<style>
+    $list .= "<style>
 .image { 
 position: relative; 
 width: 100%; /* for IE 6 */
@@ -339,149 +318,157 @@ e.preventDefault();
 .td_1 {border:1px solid #cccccc; width:50px;vertical-align: top;}
 </style>
 ";
-$list.="<form method=\"post\" id=\"adv_form\" name=\"adv_form\" action=\"" . $_SERVER["SCRIPT_URI"] . "\" enctype=\"multipart/form-data\">
-<input type=\"hidden\" name=\"durum\" value=\"islendi\">
-";
-$list.="<p>";
-for($t=0;$t<24;$t=$t+1)
-{
-if ($t=="12")
-{
-$list.="</p><p>";
-}
-$gd=gmdate("H:i",$t*60*60);	
+    $list .= '<form method="post" id="adv_form" name="adv_form" action="'.$_SERVER['SCRIPT_URI'].'" enctype="multipart/form-data">
+<input type="hidden" name="durum" value="islendi">
+';
+    $list .= '<p>';
+    for ($t = 0; $t < 24; $t = ($t + 1)) {
+        if ($t == '12') {
+            $list .= '</p><p>';
+        }
 
-if ($t==$_GET['h'])
-{
-$gd="<font color=black>".$gd."</font>";	
-}	
+        $gd = gmdate('H:i', ($t * 60 * 60));
 
-$list.="
-<a id=\"btn_green\"  style='margin:2px' href='adv_time_edit.php?day=".$_GET['day']."&h=$t'>".$gd."</a>";	
-}
-$list.="</p>";
+        if ($t == $_GET['h']) {
+            $gd = '<font color=black>'.$gd.'</font>';
+        }
 
-$selecthour=explode(",",file_get_contents("./../triggers/selecthour"));
-$selectday=trim(file_get_contents("./../triggers/selectday"));
+        $list .= "
+<a id=\"btn_green\"  style='margin:2px' href='adv_time_edit.php?day=".$_GET['day']."&h=$t'>".$gd.'</a>';
+    }
 
+    $list .= '</p>';
 
-$list.="
+    $selecthour = explode(',', file_get_contents('./../triggers/selecthour'));
+    $selectday  = trim(file_get_contents('./../triggers/selectday'));
+
+    $list  .= "
 
 <table width=80% border=0 style=\"border:1px solid #cccccc\"><tr><td style='border-bottom:1px solid #cccccc'>
 ".$DAYS[$selectday]."
 <a id=\"btn_green\" href='adv_time_edit.php?op=dselect&day=$day&h=$t'>"._DAILY_COPY."</a>
-<a id=\"btn_green\" href='adv_time_edit.php?op=dpaste&day=$day&h=$t' data-confirm='"._CONFIRM_PASTE."'>"._DAILY_PASTE."</a><br>
-<img src=./images/select.png height=20 border=0>".$DAYS[$selecthour[0]]." - ".$selecthour[1]." 
+<a id=\"btn_green\" href='adv_time_edit.php?op=dpaste&day=$day&h=$t' data-confirm='"._CONFIRM_PASTE."'>"._DAILY_PASTE.'</a><br>
+<img src=./images/select.png height=20 border=0>'.$DAYS[$selecthour[0]].' - '.$selecthour[1].' 
 
-</td></tr>";
-$numara=0;
-$saat=$_GET['h'];
+</td></tr>';
+    $numara = 0;
+    $saat   = $_GET['h'];
 
-for ($t=$saat*60;$t<($saat+1)*60;$t=$t+1)
-{
-$tm=gmdate("H:i",$t*60);
-$gl="";
-$ofp="./../triggers/time/".$_GET[day]."/".$tm."_files";
-if (file_exists($ofp)) $gl=file_get_contents("$ofp");
-$gl=str_replace(".wait"," <font color=green><b>"._SECONDS." "._WAIT."</b></font>", $gl);
-$gl=str_replace("#"," /", $gl);
+    for ($t = ($saat * 60); $t < (($saat + 1) * 60); $t = ($t + 1)) {
+        $tm  = gmdate('H:i', ($t * 60));
+        $gl  = '';
+        $ofp = './../triggers/time/'.$_GET['day'].'/'.$tm.'_files';
+        if (file_exists($ofp)) {
+            $gl = file_get_contents("$ofp");
+        }
 
-$list.="<tr><td style='border-bottom:1px solid #cccccc'><table><tr><td width=130>
+        $gl = str_replace('.wait', ' <font color=green><b>'._SECONDS.' '._WAIT.'</b></font>', $gl);
+        $gl = str_replace('#', ' /', $gl);
+
+        $list .= "<tr><td style='border-bottom:1px solid #cccccc'><table><tr><td width=130>
 <a href='adv_time_edit.php?op=select&day=$day&h=$tm'><img src=./images/select.png height=20 border=0></a>
 <a href='adv_time_edit.php?op=paste&day=$day&h=$tm' data-confirm='"._CONFIRM_PASTE."'><img src=./images/paste.png height=20 border=0></a>
 <a href='adv_time_edit.php?op=delete&day=$day&h=$tm' data-confirm='"._CONFIRM_DELETE."'><img src=./images/delete.png height=20 border=0></a>
-<a id=\"btn_green\" class='resetcon' href=\"./adv_time_edit_hour.php?day=$day&time=$tm\"> ".$tm."</a></td><td>".str_replace("\n","<br>",$gl)."</td></tr></table></td></tr>";
-}
-$list.="</table>
+<a id=\"btn_green\" class='resetcon' href=\"./adv_time_edit_hour.php?day=$day&time=$tm\"> ".$tm.'</a></td><td>'.str_replace("\n", '<br>', $gl).'</td></tr></table></td></tr>';
+    }
+
+    $list .= '</table>
 </form></p>
 
-";
+';
 
-return $list;
-}
+    return $list;
 
-function optionlenght($name,$value)
+}//end filelistresim()
+
+
+function optionlenght($name, $value)
 {
-$line="<select name=\"$name\" id=\"$name\" style=\"width:200px;font-size:16px;margin:3px\">";	
+    $line = "<select name=\"$name\" id=\"$name\" style=\"width:200px;font-size:16px;margin:3px\">";
 
-$line.="<option value=\"default\">"._DEFAULT_LENGHT."</option>";	
-$num=0;
-for ($t=3;$t<61;$t=$t+1)
-{
-$vl=$num+$t;
-if (strval($vl)==$value)
-{
-$line.="<option value=\"$vl\" selected>$vl</option>";		
-} else {
-$line.="<option value=\"$vl\">$vl</option>";	
-}
-}	
+    $line .= '<option value="default">'._DEFAULT_LENGHT.'</option>';
+    $num   = 0;
+    for ($t = 3; $t < 61; $t = ($t + 1)) {
+        $vl = ($num + $t);
+        if (strval($vl) == $value) {
+            $line .= "<option value=\"$vl\" selected>$vl</option>";
+        } else {
+            $line .= "<option value=\"$vl\">$vl</option>";
+        }
+    }
 
-$num=60;
-for ($t=5;$t<301;$t=$t+5)
-{
-$vl=$num+$t;
-if (strval($vl)==$value)
-{
-$line.="<option value=\"$vl\" selected>$vl</option>";		
-} else {
-$line.="<option value=\"$vl\">$vl</option>";	
-}
-}	
-$line.="</select>";
-return $line;
-}
+    $num = 60;
+    for ($t = 5; $t < 301; $t = ($t + 5)) {
+        $vl = ($num + $t);
+        if (strval($vl) == $value) {
+            $line .= "<option value=\"$vl\" selected>$vl</option>";
+        } else {
+            $line .= "<option value=\"$vl\">$vl</option>";
+        }
+    }
+
+    $line .= '</select>';
+    return $line;
+
+}//end optionlenght()
 
 
-function optionlist($name,$value)
+function optionlist($name, $value)
 {
-$line="<select name=\"$name\" id=\"$name\" style=\"width:200px;font-size:16px;margin:3px\">";	
+    $line = "<select name=\"$name\" id=\"$name\" style=\"width:200px;font-size:16px;margin:3px\">";
 
-$line.="<option value=\"default\">"._DEFAULT_SOUND."</option>";	
+    $line .= '<option value="default">'._DEFAULT_SOUND.'</option>';
 
-$num=-10;
-for ($t=0;$t<21;$t=$t+1)
+    $num = -10;
+    for ($t = 0; $t < 21; $t = ($t + 1)) {
+        $vl = ($num + $t);
+        if (strval($vl) == $value) {
+            $line .= "<option value=\"$vl\" selected>$vl</option>";
+        } else {
+            $line .= "<option value=\"$vl\">$vl</option>";
+        }
+    }
+
+    $line .= '</select>';
+    return $line;
+
+}//end optionlist()
+
+
+function CheckExt($filename, $ext)
 {
-$vl=$num+$t;
-if (strval($vl)==$value)
-{
-$line.="<option value=\"$vl\" selected>$vl</option>";		
-} else {
-$line.="<option value=\"$vl\">$vl</option>";	
-}
-}	
-$line.="</select>";
-return $line;
-}
+    $passed     = false;
+    $file_parts = pathinfo($filename);
+    if ($file_parts['extension'] == "$ext") {
+        $passed = true;
+    }
 
-function CheckExt($filename, $ext) {
-$passed=FALSE;
-$file_parts = pathinfo($filename);
-if ($file_parts['extension']=="$ext") $passed = TRUE;
-return $passed;
-}
+    return $passed;
+
+}//end CheckExt()
+
 
 function filelistdizin1($dizin)
 {
-$exts = array("mp3","wav");
-$dir = opendir("$dizin");
+    $exts = [
+        'mp3',
+        'wav',
+    ];
+    $dir  = opendir("$dizin");
 
-//$files = readdir($dir);
-while (false !== ($files = readdir($dir))) {
-foreach ($exts as $value) {
-if (CheckExt($files, $value)) {
-//echo "<a href=\"$files\">$files</a>\n";
-$dosyalist[]=$files;
-$count++;
-break;
-}
-}
-}
-closedir($dir);
-return $dosyalist;
-}
+    // $files = readdir($dir);
+    while (false !== ($files = readdir($dir))) {
+        foreach ($exts as $value) {
+            if (CheckExt($files, $value)) {
+                // echo "<a href=\"$files\">$files</a>\n";
+                $dosyalist[] = $files;
+                $count++;
+                break;
+            }
+        }
+    }
 
+    closedir($dir);
+    return $dosyalist;
 
-
-
-?>
+}//end filelistdizin1()
