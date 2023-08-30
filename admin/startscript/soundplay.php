@@ -1,5 +1,5 @@
 <?php
-
+date_default_timezone_set('Asia/Istanbul');
 require './../lang_turkish.php';
 $DAY = date('w', time());
 $now = date('H:i');
